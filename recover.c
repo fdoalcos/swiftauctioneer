@@ -2,59 +2,47 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+typedef uint8_t BYTE; // define BYTE as 8 bits
+
 int main(int argc, char *argv[])
 {
+    // Check usage
     if (argc != 2)
     {
-        printf("Usage: ./recover card.raw");
+        printf("Wrong usage\n");
         return 1;
     }
-    //Open file for reading
-    FILE *input_file = fopen(argv[1], "r");
-    //if check Input_file pointer fail to open then REturn error code "Could not open file"
-    if (input_file == NULL)
+    // Open file
+    FILE *inputFile = fopen(argv[1], "r");
+    if (inputFile == NULL)
     {
-        printf("Could not open file");
-        return 2;
+        printf("File cannot be opened\n");
+        return 1;
     }
 
-    //declare a variable to unsigned char to store 512 chunks array
-    unsigned char buffer[512];
+    // Read 512 bytes into a buffer
+    BYTE buffer[512];
+    int counter = 0; // to count the number of files created/read
+    FILE *outputFile = 0;
+    char filename[8]; // xxx.jpg + '\0', it is 8 because we need the null character too since its a string
 
-    //for the purpose of counting of image later in the loop
-    int count_image = 0;
-
-    //An uninitialize file pointer to use to output data gotten from input file
-    FILE *output_file = NULL;
-
-    char *filename = malloc(8 * sizeof(char));
-    //char filename[8];
-
-    /*Read 512 bytes from input_file and store on the buffer*/
-    while (fread(buffer, sizeof(char), 512, input_file))
+    // Check if this might be the beginning of a 512 byte JPEG file
+    while (fread(buffer, sizeof(BYTE), 512, inputFile))
     {
-        //check if bytes is start of a JPEG
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
-            //write jpeg into file name in form 001.jpg, 002.jpg and so on
-            sprintf(filename, "%03i.jpg", count_image);
-
-            //open Out_file for writing
-            output_file = fopen(filename, "w");
-
-            //fwrite(buffer, sizeof(buffer), 1, output_file);
-            //count number of image found
-            count_image++;
+            sprintf(filename, "%03i.jpg", counter); // for creating a new file
+            outputFile = fopen(filename, "w");
+            counter++;
         }
-        //Check if output have been used for valid input
-        if (output_file != NULL)
+        else if (outputFile != NULL)
         {
-            fwrite(buffer, sizeof(char), 512, output_file);
+            fwrite(buffer, sizeof(BYTE), 512, outputFile);
         }
 
     }
-    free(filename);
-    fclose(output_file);
-    fclose(input_file);
-
+     // Close files
+    fclose(inputFile);
+    fclose(outputFile);
+    
     return 0;
