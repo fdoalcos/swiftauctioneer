@@ -2,7 +2,9 @@ from cs50 import get_int
 
 n = get_int("Height: ")
 
-for i in range(n):
-    for j in range(i):
+for row in range(n):
+    for space in range(n - row):
+        print(" ", end="")
+    for column in range(row):
         print("#", end="")
     print()
