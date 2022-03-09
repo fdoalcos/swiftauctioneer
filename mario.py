@@ -1,0 +1,9 @@
+# TODO
+from cs50 import get_int
+
+n = get_int("Height: ")
+
+for i in range(n):
+    for j in range(i):
+        print("#", end="")
+    print()
