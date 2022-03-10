@@ -8,17 +8,32 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python dna.py data.csv sequence.txt")
         sys.exit(1)
+
+    srs = {
+        "AGATC": 0,
+        "TTTTTTCT": 0,
+        "AATG": 0,
+        "TCTAG": 0,
+        "GATA": 0,
+        "TATC": 0,
+        "GAAA": 0,
+        "TCTG": 0
+    }
     # TODO: Read database file into a variable
     with open(sys.argv[1]) as database:
-        datareader = csv.reader(database)
+        datareader = csv.DictReader(database)
     # TODO: Read DNA sequence file into a variable
     with open(sys.argv[2]) as dna:
         dnareader = csv.reader(dna)
     # TODO: Find longest match of each STR in DNA sequence
-    for row in dnareader:
-        longest_match(dnareader, datareader[1])
+        for row in dnareader:
+            longest_match(dnareader, datareader[1])
     # TODO: Check database for matching profiles
 
+    if row != datareader:
+        print("No match")
+    else:
+        print(datareader["name"])
     return
 
 
