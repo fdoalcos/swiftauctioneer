@@ -5,9 +5,9 @@ while True:
     if n > 0 and n < 9:
         break
 
-for row in range(n + 1):
-    for space in range(n - row - 1):
+for row in range(n):
+    for space in range(n - row):
         print(" ", end="")
-    for column in range(row):
+    for column in range(row + 1):
         print("#", end="")
     print()
