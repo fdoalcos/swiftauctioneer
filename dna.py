@@ -9,7 +9,7 @@ def main():
         print("Usage: python dna.py data.csv sequence.txt")
         sys.exit(1)
 
-    srs = {
+    strs = {
         "AGATC": 0,
         "TTTTTTCT": 0,
         "AATG": 0,
@@ -20,21 +20,22 @@ def main():
         "TCTG": 0
     }
     # TODO: Read database file into a variable
-    with open(sys.argv[1]) as database:
-        datareader = csv.DictReader(database)
+    file = open(sys.argv[1])
+    file.read()
     # TODO: Read DNA sequence file into a variable
-    with open(sys.argv[2]) as dna:
+    with open(sys.argv[2],) as dna:
         dnareader = csv.reader(dna)
     # TODO: Find longest match of each STR in DNA sequence
+        longest_match(file, dna)
         for row in dnareader:
-            longest_match(dnareader, datareader[1])
+            sts = row
+            strs[sts] += 1
     # TODO: Check database for matching profiles
-
-    if row != datareader:
-        print("No match")
-    else:
-        print(datareader["name"])
-    return
+        if row != datareader:
+            print("No match")
+        else:
+            print(datareader["name"])
+        return
 
 
 def longest_match(sequence, subsequence):
