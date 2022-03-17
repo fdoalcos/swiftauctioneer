@@ -1,1 +1,1 @@
-SELECT title, rating FROM movies, ratings WHERE year = 2008;
+SELECT title, rating FROM movies, ratings WHERE year = 2010;
