@@ -1,0 +1,109 @@
+.myvideo
+{
+    position: fixed; no-repeat;
+    left: 50%;
+    z-index:-1000;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: fill;
+
+}
+
+.box {
+   display: flex;
+   align-items:center;
+}
+
+.background
+{
+    background-color: #000000;
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.header
+{
+    text-align: center;
+    font-family: Canela Deck Web;
+    margin-top: 130px;
+    font-size: 80px;
+}
+
+.header2
+{
+    text-align: left;
+    font-family: Canela Deck Web;
+    margin-top: 280px;
+    margin-left: 30px;
+    font-size: 50px;
+
+}
+
+.header3
+{
+    text-align: right;
+    font-family: Canela Deck Web;
+    margin-top: 200px;
+    margin-right: 30px;
+    font-size: 40px;
+}
+
+.header4
+{
+    text-align: right;
+    font-family: Canela Deck Web;
+    margin-top: 10px;
+    margin-right: 30px;
+    font-size: 50px;
+}
+.image
+{
+    float: left;
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+.text
+{
+    width: 500px;
+    height: 100px;
+    margin-left: 30px;
+    text-align: left;
+    font-family: Canela Deck Web;
+    font-size: 20px;
+
+}
+
+.text2
+{
+    font-family: Canela Deck Web;
+    margin-right: 30px;
+    text-align: right;
+}
+
+.after
+{
+    font-family: Canela Deck Web;
+    font-size: 20px;
+}
+.element
+{
+    overflow-y: scroll;
+}
+
+.nav
+{
+    font-family: Canela Dock Web;
+    font-size: 30px;
+    color: white;
+}
+
+.br
+{
+    margin-top: 1200px;
+}
