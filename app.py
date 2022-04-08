@@ -47,12 +47,12 @@ def index():
 
     user_id = session["user_id"]
 
-    
+
 
     user_cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)
     cash = user_cash[0]["cash"]
 
-    transaction = db.execute("SELECT symbol, SUM(shares) AS shares, price, shares * price AS multiply FROM transactions GROUP BY symbol")
+    transaction = db.execute("SELECT symbol, SUM(shares) AS shares, price, total FROM transactions GROUP BY symbol")
     return render_template("transaction.html", transaction = transaction, cash = cash)
 
 
@@ -100,7 +100,7 @@ def buy():
 
         date = datetime.datetime.now()
         buy = "buy"
-        db.execute("INSERT INTO transactions (user_id, symbol, name, shares, price, date, type) VALUES(?, ?, ?, ?, ?, ?, ?)", user_id, stocks["symbol"], stocks["name"], shares, stocks["price"], date, buy)
+        db.execute("INSERT INTO transactions (user_id, symbol, name, shares, price, date, total, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", user_id, stocks["symbol"], stocks["name"], shares, stocks["price"], date, shares * stocks["price"], buy)
         db.execute("INSERT INTO buy (user_id, symbol, name, shares, price, date, type) VALUES(?, ?, ?, ?, ?, ?, ?)", user_id, stocks["symbol"], stocks["name"], shares, stocks["price"], date, buy)
         flash("Bought")
 
@@ -225,7 +225,9 @@ def register():
 def sell():
     """Sell shares of stock"""
     if request.method == "GET":
-        return render_template("sell.html")
+        user_id = session["user_id"]
+        symbol_db = db.execute("SELECT symbol FROM transactions WHERE user_id = ? GROUP BY symbol HAVING SUM(shares) > 0", user_id)
+        return render_template("sell.html", symbol = [row["symbol"] for row in symbol_db])
 
     else:
         user_id = session["user_id"]
@@ -247,9 +249,10 @@ def sell():
         date = datetime.datetime.now()
 
         sell = "sell"
+        price = stocks["price"] - stocks["price"]
 
         db.execute("INSERT INTO sell (user_id, symbol, shares, price, name, date, type) VALUES ( ?, ?, ?, ?, ?, ?, ?)", user_id, symbol, shares, stocks["price"], stocks["name"], date, sell)
-        db.execute("INSERT INTO transactions (user_id, symbol, name, shares, price, date, type) VALUES(?, ?, ?, ?, ?, ?, ?)", user_id, stocks["symbol"], stocks["name"], (-1)*shares, stocks["price"], date, sell)
+        db.execute("INSERT INTO transactions (user_id, symbol, name, shares, price, date, total, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", user_id, stocks["symbol"], stocks["name"], (-1)*shares, stocks["price"], date, price, sell)
 
 
         cash_db = db.execute("SELECT cash FROM users WHERE id = ?", user_id)

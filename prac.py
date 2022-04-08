@@ -1,3 +1,4 @@
-f = "buy"
+tae = [1,2,3,4,5]
 
-print(f"tae ka{f}")
+for row in tae:
+    print(row)
