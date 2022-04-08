@@ -106,6 +106,26 @@ def buy():
 
         return redirect("/")
 
+@app.route("/addcash", methods=["GET", "POST"])
+@login_required
+def add_cash():
+    """Add cash"""
+    if request.method == "GET":
+        return render_template("addcash.html")
+
+    else:
+        user_id = session["user_id"]
+        user_cash = int(request.form.get("cash"))
+
+        cash_db = db.execute("SELECT cash FROM users WHERE id = ?", user_id)
+        cash = cash_db[0]["cash"]
+
+        value = cash + user_cash
+
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", value, user_id)
+
+        return redirect("/")
+
 @app.route("/history")
 @login_required
 def history():
@@ -219,6 +239,7 @@ def register():
 
     elif request.method == "GET":
         return render_template("registration.html")
+
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
