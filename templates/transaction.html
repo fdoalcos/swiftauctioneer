@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Symbols</th>
+                <th>Shares</th>
+                <th>price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transactions in transaction%}
+            <tr>
+                <td>{{ transactions.symbol }}</td>
+                <td>{{ transactions.shares }}</td>
+                <td>{{ transactions.price }}</td>
+                <td>{{ transactions.multiply }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>CASH</td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+
