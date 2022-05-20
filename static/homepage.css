@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+  float: right;
+}
+
+li a{
+  padding: 10px 8px;
+  margin: 5px;
+}
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+
+ .text2 {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.70;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+.text2:hover{
+  opacity: 1;
+}
+
+ .text3 {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.70;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+.text3:hover{
+  opacity: 1;
+  color: white;
+}
+
+.login{
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.70;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+.login:hover{
+  opacity: 1;
+}
+
+
+.login1{
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.70;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+.login1:hover{
+  opacity: 1;
+  color: white;
+}
+
+
+.belowcenter {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+
+}
+
+
+.button {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+  padding: 14px 40px;
+  border: 2px solid white;
+  color: white;
+  background: none;
+
+}
+
+.button:hover{
+  background-color: white;
+  transition: 0.25s;
+  color: black;
+
+}
+
+.text {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 4rem;
+  text-align: center;
+}
+
+
+
+.centered {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: #ffffff;
+}
+
+
+
+
+.table {
+  position: relative;
+  display: table;
+  table-layout:fixed;
+  width:110%;
+  z-index: -1;
+  opacity: 0.25;
+  }
+
+.table div {
+  display:table-cell;
+  }
+
+img {
+  width:100%;
+}
+
+h1 {
+    font-size: 100px;
+    color: white;
+
+}
