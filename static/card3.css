@@ -1,0 +1,79 @@
+
+body{
+    background: #ecf0f1;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+
+.search{
+    position: relative;
+    top: 30px;
+    left: 500px;
+    width: 400px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.type{
+    margin-top: 50px;
+    color: white;
+    font-size: 35px;
+    font-family: 'Open-Sans', sans-serif;
+    font-weight: 800;
+}
+
+
+
+.submit{
+    position: relative;
+    top: 30px;
+    left: 480px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.rowcss {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+
+
+}
+
+.card1{
+    flex: 1 1 33%;
+    width: 40%;
+    max-width: 33%;
+    margin: 16px;
+}
+
+.img{
+    width: 250%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+}
+
+figcaption{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 200px;
+    color: white;
+}
+
+
+
+#card1:hover #anime{
+    transform: scale(1.05);
+}
+
+#card1:hover #layer{
+    color: #24C444;
+}
+

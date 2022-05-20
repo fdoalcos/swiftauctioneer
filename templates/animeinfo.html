@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block head %}
+    <link href="/static/anime.css" rel="stylesheet">
+    <link href="/static/card3.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block main %}
+    <div>
+        <div>
+            <img name="image" src={{ image }}>
+        </div>
+        <div>
+            <h3>{{ synopsis }}</h3>
+        </div>
+        <div>
+            <h2>{{ title }}</h2>
+        </div>
+    </div>
+{% endblock %}

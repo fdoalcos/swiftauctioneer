@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/homepage.css">
+{% endblock %}
+
+{% block title %}
+Log in
+{% endblock%}
+
+
+{% block main %}
+
+
+<div>
+    <nav class="top-right">
+        <ul>
+            <li><a class="login1" href="/signup">Sign Up</a></li>
+            <li><a class="text3" href="/">About</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div class="table1">
+        <div>
+            <img class="image1" src="/static/black clover2.jpg"/>
+        </div>
+        <div>
+            <img class="image1" src="/static/parasyte.jpg"/>
+        </div>
+        <div>
+            <img class="image1" src="/static/jujutsu2.jpg"/>
+        </div>
+        <div>
+            <img class="image1" src="/static/one piece.jpg"/>
+        </div>
+    </div>
+<form action="/login" class="box" method="post" autocomplete="off">
+    <h1>Log in</h1>
+    <input type="text" name="name" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" name="login" value="Login">
+    <h3 class="text4">New to AniPy? <span ><a class="text5" href="/signup">Sign up now</a></span></h3>
+    {% if get_flashed_messages() %}
+    <div class="alert alert-transparent mb-0 text-center alert1" role="alert">
+        {{ get_flashed_messages() | join(" ") }}
+    </div>
+    {% endif %}
+</form>
+{% endblock %}
