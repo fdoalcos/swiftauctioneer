@@ -1,0 +1,21 @@
+
+
+
+/*.rowcss > * {
+    flex-basis: 20rem;
+    flex-shrink: 0;
+}
+
+
+
+.rowcss .card > .card-content {
+    flex-grow: 1;
+}
+
+.rowcss .card > card-img-top {
+    flex-basis: 25rem;
+    flex-shrink: 0;
+    overflow-y: hidden;
+    background-color: grey;
+}
+/*
