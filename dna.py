@@ -8,34 +8,43 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python dna.py data.csv sequence.txt")
         sys.exit(1)
-
-    strs = {
-        "AGATC": 0,
-        "TTTTTTCT": 0,
-        "AATG": 0,
-        "TCTAG": 0,
-        "GATA": 0,
-        "TATC": 0,
-        "GAAA": 0,
-        "TCTG": 0
-    }
     # TODO: Read database file into a variable
-    file = open(sys.argv[1])
-    file.read()
+    database = sys.argv[1]
+    sequence = sys.argv[2]
+
+
+    with open(database, "r") as file:
+        reader = csv.reader(file)
+        memory = list(reader)
+
     # TODO: Read DNA sequence file into a variable
-    with open(sys.argv[2],) as dna:
-        dnareader = csv.reader(dna)
+    with open(sequence, "r") as dna:
+        dnareader = dna.read()
+
     # TODO: Find longest match of each STR in DNA sequence
-        longest_match(file, dna)
-        for row in dnareader:
-            sts = row
-            strs[sts] += 1
+    matches = []
+    for i in range(1, len(memory[0])):
+        matches.append(longest_match(dnareader, memory[0][i]))
+
     # TODO: Check database for matching profiles
-        if row != datareader:
-            print("No match")
+    suspect = "No Match"
+    suspect_counter = 0
+
+    for i in range(1, len(memory)):
+        for j in range(len(matches)):
+
+            if matches[j] == int(memory[i][j + 1]):
+                   suspect_counter += 1
+
+        if suspect_counter == len(matches):
+            suspect = database[i][0]
+            break
         else:
-            print(datareader["name"])
-        return
+            suspect_counter = 0
+
+    print(suspect)
+
+    return
 
 
 def longest_match(sequence, subsequence):
