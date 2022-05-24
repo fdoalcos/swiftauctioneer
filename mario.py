@@ -8,7 +8,7 @@ while True:
 
 for row in range(n):
     for space in range(n - row):
-        print("", end="")
+        print(" ", end="")
     for column in range(row + 1):
         print("#", end="")
     print()
