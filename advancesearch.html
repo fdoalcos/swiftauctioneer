@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <img class="google-header" src="google.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </nav>
+    <div class="label">
+        <label>Advanced Search</label>
+    </div>
+    <div class="divider"></div>
+    <div class="form-divider">
+        <form action="https://www.google.com/search" name="f">
+            <div class="starter">
+                <div class="span">
+                    <span>Find pages with...</span>
+                </div>
+                <div class="divide"></div>
+                <div class="span1">
+                    <span id="one">To do this in the search box</span>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="next" id="nex">
+                <div>
+                    <label class="type">all these words:</label>
+                </div>
+                <div >
+                        <input class="input" type="text" name="as_q">
+                </div>
+                <div class="span2">
+                    <div id="two">Type the important words: <span class="span-item">tricolor rat terrier</span></div>
+                </div>
+            </div>
+             <div class="separator"></div>
+
+            <div class="next">
+                <div>
+                    <label class="type">this exact word or phrase:</label>
+                </div>
+                <div >
+                        <input class="input" type="text" name="as_epq">
+                </div>
+                <div class="span2">
+                    <div id="three">Put exact words in quotes: <span class="span-item">"rat terrier"</span></div>
+                </div>
+            </div>
+
+             <div class="separator"></div>
+            <div class="next">
+                <div>
+                    <label class="type">any of these words:</label>
+                </div>
+                <div >
+                        <input class="input" type="text" name="as_oq">
+                </div>
+                <div class="span2">
+                    <div id="four">Type OR between all the words you want: <span class="span-item">miniature OR standard</span></div>
+                </div>
+            </div>
+
+             <div class="separator"></div>
+            <div class="next">
+                <div>
+                    <label class="type">none of these words</label>
+                </div>
+                <div >
+                        <input class="input" type="text" name="as_eq">
+                </div>
+                <div class="span2">
+                    <div id="five">Put a minus sign just before words you don't want: <span class="span-item">-rodent, -"Jack Russell"</span></div>
+                </div>
+            </div>
+
+             <div class="separator"></div>
+            
+            <div class="button">
+                <div class="divide1"></div>
+                <div>
+                        <input class="search-btn" value="Advanced Search" type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
