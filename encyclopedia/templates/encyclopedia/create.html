@@ -1,0 +1,22 @@
+{% extends "encyclopedia/index.html" %}
+
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h1>Create New Page</h1>
+    <form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+        <div class="mb-3">
+            {{ form }}
+            <div class="btn-l">
+                <input class="button" value="Save Page" type="submit">
+            </div>
+        </div>
+    </form>
+{% endblock %}
