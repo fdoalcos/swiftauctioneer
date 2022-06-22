@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Open+Sans:wght@300&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Permanent+Marker&display=swap");
+body {
+  margin: 0;
+  background-color: white; }
+
+.image {
+  width: 70px;
+  height: 100%;
+  margin: 20px 10px; }
+
+.wiki {
+  font-family: 'Linux Libertine';
+  /* normal */
+  src: url("/static/fonts/linux-libertine/LinLibertine_R.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  color: white;
+  font-size: 40px; }
+
+code {
+  white-space: pre; }
+
+h1 {
+  margin-top: 0px;
+  padding-top: 20px;
+  font-family: 'Joan', serif;
+  font-weight: 500px;
+  font-size: 70px; }
+
+.btn-l {
+  margin-top: 30px; }
+
+.btn-2 {
+  margin-top: 30px; }
+
+.button {
+  background: none;
+  border: 2px solid black;
+  border-radius: 1px;
+  padding: 10px 20px;
+  text-align: center;
+  color: black;
+  font-weight: 500;
+  width: 150px;
+  transition: 0.25s;
+  display: block; }
+
+.button:hover {
+  background: black;
+  color: white;
+  text-decoration: none; }
+
+p {
+  font-family: 'Joan', serif;
+  width: 1000px;
+  opacity: .95;
+  margin-top: 20px; }
+
+.tags {
+  color: black;
+  font-family: 'Open-sans', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none; }
+
+textarea {
+  height: 90vh;
+  width: 100%; }
+
+.main {
+  padding: 10px; }
+
+.nava {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.25s;
+  width: 200px; }
+
+.space0 {
+  margin: 10px 0 0 0; }
+
+.space {
+  border: 2px solid #353b48;
+  max-width: 250px;
+  width: 105%;
+  padding: 5px 10px; }
+
+li {
+  margin: 10px 0 10px 0;
+  transition: 0.25s; }
+
+li:hover {
+  transform: translateX(10px);
+  color: black;
+  text-decoration-color: black; }
+
+a:hover {
+  text-decoration: underline black; }
+
+.space1 {
+  margin: 0 7px 0 0; }
+
+.list {
+  list-style: none;
+  margin: 25px 0 0 -23px; }
+
+.lita {
+  margin: 0 5px 0 0; }
+
+.nava:hover {
+  color: white; }
+
+.search {
+  width: 100%;
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0 10px 0 5px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border-style: none;
+  border-color: none;
+  outline: none;
+  background-color: #f5f6fa; }
+
+.sidebar {
+  background-color: #353b48;
+  height: 100vh;
+  padding: 20px; }
+
+.sidebar h2 {
+  margin-top: 5px; }
+
+/*# sourceMappingURL=styles.csss.map */
