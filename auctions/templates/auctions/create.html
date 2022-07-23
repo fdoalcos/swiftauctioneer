@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+{% load widget_tweaks %}
+
+<form action="{% url 'create' %}" class="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="mb-3 container create__form">
+        <div class="form-group">
+            <label for="item" class="form-label">Item</label>
+            {% render_field form.item class="form-control" placeholder="Name of the product" id="item" %}
+        </div>
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            {% render_field form.description class="form-control" placeholder="Description of the product..." id="description" %}
+        </div>
+        <div class="form-group">
+            <label for="image" class="form-label">Image</label>
+            {% render_field form.image class="form-control" id="image" %}
+        </div>
+        <div class="form-group">
+            <label for="category" class="form-label">Category</label>
+            {% render_field form.category class="form-control" id="category" %}
+        </div>
+        <div class="form-group">
+            <label for="price" class="form-label">Price</label>
+            {% render_field form.price class="form-control" placeholder="$" id="price" %}
+        </div>
+        <div class="create__button">
+            <input type="submit" value="Save">
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
