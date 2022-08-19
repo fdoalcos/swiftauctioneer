@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="categories_product-grid">
+
+            {% for listings in categories %}
+                {% if listings.active %}
+                    <div class="cards stacked">
+                        {% if listings.image %}
+                            <img src="{{ listings.image.url }}" class="card__image" alt="{{ listings.item }}" >
+                        {% else %}
+                            <img src="static/auctions/noimage.jpg" class="card__image" alt="{{ listings.item }}">
+                        {% endif %}
+                        <a href="{% url 'listing' listings.id %}"><div class="card__content">
+                            <h2 class="card__title">{{ listings.item }}</h2>
+                            <p class="card__price">${{ listings.price|floatformat:2 }}</p>
+                            <p class="card__description">{{ listings.category}}</p>
+                        </a></div>
+                    </div>
+
+                {% endif %}
+                {% empty %}
+                        <p> No listings </p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

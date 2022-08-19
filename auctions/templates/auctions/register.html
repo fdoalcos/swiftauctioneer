@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+    
+    <div class="register__card">
+        <h2 class="register__title">Become a member</h2>
+        <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control register__username" autofocus type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input class="form-control register__email" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input class="form-control register__password" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control register__confirm" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="btn btn-primary register__button" type="submit" value="Register">
+        </form>
+
+        <p class="register__footer">Already have an account? <a class="register__footera" href="{% url 'login' %}">Log In here.</a></p>
+        </div>
+
+{% endblock %}

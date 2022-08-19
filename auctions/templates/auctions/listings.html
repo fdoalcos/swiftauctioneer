@@ -1,0 +1,143 @@
+{% extends "auctions/layout.html" %}
+
+{% block body%}
+
+{% load widget_tweaks %}
+    {% if listings.active %}
+        <section class=" container product my-5 pb-5">
+            <div class="listings mt-5">
+                <div class="col-lg-5 col-md-12 col-12">
+                    {% if listings.image %}
+                        <img class="listings__image" src="{{  listings.image.url }}" alt="{{ list.item}}" style="width:100%">
+                    {% else %}
+                        <img class="listings__image" src="static/auctions/nophoto.jpg" alt="{{ list.item}}" style="width:100%">
+                    {% endif %}
+                </div>
+
+                <div class="col-lg-6.5 col-md-12 col-12">
+                    <h6 class="mt-5 listings__category">{{ listings.category }}</h6>
+                    <h3 class="pt-3 listings__item">{{ listings.item }}</h3>
+                    <h6 class="listings__username" >by {{ listings.username }}</h6>
+                    <h2 class="mt-4 listings__price">${{ listings.price|floatformat:2 }}</h2>
+                    <h6 class="listings__number">Number of bid({{ listings.number_bids }})</h6>
+                    <form class="listings_bid" action="{% url 'listing' listings.id %}" method="POST">
+                    {% csrf_token %}
+                        {% render_field form.bid placeholder="$" %}
+                        <input class="mt-3 listings__bids" type="button" value="Bid">
+                    </form>
+                    <h4 class="mt-4 listings__description">Product Details</h4>
+                    <p class="mb-4 listings__descriptions">{{ listings.description}}</p>
+
+                    <div class=" listings__line">
+                        {% if watched %}
+                            <form class="listings__remove" action="{% url 'remove' listings.id %}">
+                            {% csrf_token %}
+                                <button class="listings__removes">Remove to Watchlist </button>
+                            </form>
+                        {% endif%}
+                        {% if not watched %}
+                             <form class="listings__add" action="{% url 'watch' listings.id %}">
+                            {% csrf_token %}
+                                <button class="listings__adds">Add to Watchlist </button>
+                            </form>
+                        {% endif %}
+                         {% if request.user == listings.username %}
+                            <form class="listings__form" action="{% url 'close' listings.id %}">
+                            {% csrf_token %}
+                                <button class="listings__close">Close <i class="listings__icon bi bi-bag-dash"></i></button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+    <div class="alert alert-secondary" role="alert">
+    Auction is already done!
+    </div>
+    <section class=" container product my-5 pb-5">
+            <div class="listings mt-5">
+                <div class="col-lg-5 col-md-12 col-12">
+                    {% if listings.image %}
+                        <img class="listings__image" src="{{  listings.image.url }}" alt="{{ list.item}}" style="width:100%">
+                    {% else %}
+                        <img class="listings__image" src="static/auctions/nophoto.jpg" alt="{{ list.item}}" style="width:100%">
+                    {% endif %}
+                </div>
+
+                <div class="col-lg-6.5 col-md-12 col-12">
+                    <h6 class="mt-5 listings__category">{{ listings.category }}</h6>
+                    <h3 class="pt-3 listings__item">{{ listings.item }}</h3>
+                    <h6 class="listings__username" >by {{ listings.username }}</h6>
+                    <h2 class="mt-4 listings__price">${{ listings.price|floatformat:2 }}</h2>
+                    <h4 class="mt-4 listings__description">Product Details</h4>
+                    <p class="mb-4 listings__descriptions">{{ listings.description}}</p>
+
+                    <div class=" listings__line">
+                        {% if request.user == listings.winner %}
+                            <p class="listings__winner">You are the winner, Congrats!</p>
+                            <div class="firework"></div>
+                            <div class="firework"></div>
+                            <div class="firework"></div>
+                        {% elif request.user == listings.username %}
+                            <div class="firework"></div>
+                            <div class="firework"></div>
+                            <div class="firework"></div>
+                            <p class="listings__user">You have sold the item to {{ listings.winner }}</p>
+                        {% elif request.user != listings.winner %}
+                            <p class="listings__loser">You lost, Good luck next time!</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    {% endif %}
+
+        <section class="my-5 pt-5 mx-2 pb-2 container">
+            <div class=" pb-5">
+                <div class="comment__heading comment__footer">
+                    <h2 class="comment__h2">Comments</h2>
+                </div>
+                <div class="comment__form__container">
+                    <div class="comment__form__profile">
+                        <div class="comment__form__image"><img src="/static/auctions/profile1.png" alt=""></div>
+                        <div class="comment__form__name">
+                            <strong>{{ request.user }}</strong>
+                            <span>{{ request.user.email }}</span>
+                        </div>
+                    </div>
+
+                    <form class="comment__form"action="{% url 'comment' listings.id%}" method="POST">
+                    {% csrf_token %}
+                        {% render_field forms.comment class="comment__form__input" placeholder="Leave a comment" %}
+                        <div class="right">
+                        </div>
+                    </form>
+                </div>
+                <div class="comment__container">
+                    <div class="comment__content">
+                        {% if user.is_authenticated %}
+                            {% for comment in comment%}
+                                <div class="  comment__profile">
+                                    <div class="comment__image"><img src="/static/auctions/profile1.png" alt=""></div>
+                                    <div class="comment__name">
+                                        <strong>{{ comment.username }}</strong>
+                                        <span>{{ comment.username.email }}</span>
+
+                                    </div>
+
+                                </div>
+                                <div class=" comment__paragraph">
+                                    <p class="comment__comments">{{ comment.comment }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+{% endblock %}

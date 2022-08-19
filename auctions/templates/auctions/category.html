@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="category__grid">
+
+            {% for category in category %}
+            <a href="{% url 'categories' category %}">
+                <div class="category__cards" >
+                    {% if category.category_image %}
+                        <img class="category__image" src="{{ category.category_image.url}}" alt="{{ category.name }}" >
+                    {% else %}
+                        <img class="category__image" src="static/auctions/noimage.jpg" alt="{{ category.name }}">
+                    {% endif %}
+                    <div class="category__content">
+                        <h2 class="category__title">{{ category.name }}</h2>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
